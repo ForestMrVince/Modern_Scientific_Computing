@@ -9,4 +9,4 @@ src：每个章节学习中生成的代码，其中子目录为每个章节的�
 
 欢迎各个同学下载交流
 
-GNU GENERAL PUBLIC LICENSE
+本代码库遵循协议：GNU General Public License v3.0
