@@ -10,4 +10,4 @@
 Sup{A}=+∞
 如果A下方无界，则认为
 Inf{A}=-∞
-原帖地址：https://blog.csdn.net/wasefadg/article/details/53390556
+[原帖地址](https://blog.csdn.net/wasefadg/article/details/53390556)
