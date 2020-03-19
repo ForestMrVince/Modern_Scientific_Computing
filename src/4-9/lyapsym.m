@@ -1,13 +1,15 @@
 function [X] = lyapsym(A, B, C)
-% lyapsym Çó½âLyapunov·½³Ì»òSylvester·½³ÌµÄ½âÎö½â
-%   Lyapunov·½³ÌĞÎÊ½: A * X + X * A.' = -C
-%   Sylvester·½³ÌĞÎÊ½: A * X + X * B = -C
-%   ÊäÈë: 
-%       A: Èç·½³ÌĞÎÊ½ËùÊ¾
-%       B: Èç·½³ÌĞÎÊ½ËùÊ¾
-%       C: Èç·½³ÌĞÎÊ½ËùÊ¾
-%   Êä³ö: 
-%       X: Èç·½³ÌĞÎÊ½ËùÊ¾
+% lyapsym æ±‚è§£Lyapunovæ–¹ç¨‹æˆ–Sylvesteræ–¹ç¨‹çš„è§£æè§£
+%   Lyapunovæ–¹ç¨‹å½¢å¼: A * X + X * A.' = -C
+%       è°ƒç”¨ç¤ºä¾‹: lyapsym(sym(A), C)
+%   Sylvesteræ–¹ç¨‹å½¢å¼: A * X + X * B = -C
+%       è°ƒç”¨ç¤ºä¾‹: lyapsym(sym(A), B, C)
+%   è¾“å…¥: 
+%       A: å¦‚æ–¹ç¨‹å½¢å¼æ‰€ç¤º
+%       B: å¦‚æ–¹ç¨‹å½¢å¼æ‰€ç¤º
+%       C: å¦‚æ–¹ç¨‹å½¢å¼æ‰€ç¤º
+%   è¾“å‡º: 
+%       X: å¦‚æ–¹ç¨‹å½¢å¼æ‰€ç¤º
 
 if nargin == 2, C = B; B = A'; end
 [nr, nc] = size(C);
