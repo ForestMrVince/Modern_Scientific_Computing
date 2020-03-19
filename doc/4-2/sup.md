@@ -8,8 +8,8 @@
 集合A的上确界记为`Sup{A}`，下确界记为`Inf{A}`。
 
 如果`A`上方无界，我们则说
-`Sup{A}=+∞`
+- `Sup{A}=+∞`
 如果`A`下方无界，则认为
-`Inf{A}=-∞`
+- `Inf{A}=-∞`
 
 [原帖地址](https://blog.csdn.net/wasefadg/article/details/53390556)
