@@ -1,22 +1,27 @@
 function [t, y] = INVLAP_new(G, t0, tn, N, H, tx, ux)
-% INVLAP_new Laplace·´±ä»»ÊýÖµ½âÇó½âº¯Êý
-% µ÷ÓÃ¸ñÊ½Ê¾Àý: 
+% INVLAP_new Laplaceåå˜æ¢æ•°å€¼è§£æ±‚è§£å‡½æ•°
+% è°ƒç”¨æ ¼å¼ç¤ºä¾‹: 
 %   [t, y] = INVLAP_new(G, t0, tn, N)
 %   [t, y] = INVLAP_new(G, t0, tn, N, H)
 %   [t, y] = INVLAP_new(G, t0, tn, N, H, u)
 %   [t, y] = INVLAP_new(G, t0, tn, N, tx, ux)
-%   ÊäÈë: 
-%       G: ±»ÊÔÏµÍ³µÄ´«µÝº¯Êý
-%       t0: ÆðÊ¼Ê±¿Ì
-%       tn: ÖÕÖ¹Ê±¿Ì
-%       N: ÔËËãµã¸öÊý
-%       H: ¸º·´À¡´«µÝº¯Êý
-%       u: ÊäÈëÐÅºÅÊ±Óòº¯Êý
-%       tx: ÊäÈëº¯Êý²ÉÑùµã, Ê±¼ä×ø±ê
-%       ux: ÊäÈëº¯Êý²ÉÑùµã, ·ùÖµ×ø±ê
-%   Êä³ö: 
-%       t: Êä³öÐÅºÅÊ±¼ä×ø±êÏòÁ¿
-%       y: Êä³öÐÅºÅ·ùÖµ×ø±êÏòÁ¿
+% ç¤ºä¾‹ä»£ç æ®µ: 
+% >> G=['(s^0.4+ 0.4*s^0.2+0.5)/','(s^0.2+0.02*s^0.1+0.6)^0.4/(s^0.3+0.5)^0.6']; [t,y]=INVLAP_new(G,0,1,1000); plot(t,y) 
+% >> f=@(t)exp(-0.3*t).*sin(t.^2); tic, [t,y]=INVLAP_new(G,0,15,400,0,f); toc, plot(t,y) 
+% >> x0=0:0.2:15; u0=exp(-0.3*x0).*sin(x0.^2); tic, [t,y]=INVLAP_new(G,0,15,200,0,x0,u0); toc, plot(t,y)
+% >> G=['(sinh(0.1*sqrt(s))/0.1/sqrt(s))^2', '/sqrt(s)/sinh(sqrt(s))']; [t,y]=INVLAP_new(G,0,10,1000,1,'1/s'); plot(t,y)
+%   è¾“å…¥: 
+%       G: è¢«è¯•ç³»ç»Ÿçš„ä¼ é€’å‡½æ•°
+%       t0: èµ·å§‹æ—¶åˆ»
+%       tn: ç»ˆæ­¢æ—¶åˆ»
+%       N: è¿ç®—ç‚¹ä¸ªæ•°
+%       H: è´Ÿåé¦ˆä¼ é€’å‡½æ•°
+%       u: è¾“å…¥ä¿¡å·æ—¶åŸŸå‡½æ•°
+%       tx: è¾“å…¥å‡½æ•°é‡‡æ ·ç‚¹, æ—¶é—´åæ ‡
+%       ux: è¾“å…¥å‡½æ•°é‡‡æ ·ç‚¹, å¹…å€¼åæ ‡
+%   è¾“å‡º: 
+%       t: è¾“å‡ºä¿¡å·æ—¶é—´åæ ‡å‘é‡
+%       y: è¾“å‡ºä¿¡å·å¹…å€¼åæ ‡å‘é‡
 
 G = add_dots(G);
 if nargin <= 5, tx='1'; end, if nargin <= 4, H = 0; end
