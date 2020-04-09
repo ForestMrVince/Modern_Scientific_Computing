@@ -4,4 +4,4 @@
 
 在`bvp5c`的说明文档中的子标题`solinit - 解的初始估计值`中详细描述了`bvpinit`输出数据的详细含义。并且，在介绍`odefun`和`bcfun`的部分中详细描述了`未知参数`的概念。这些概念对理解`bvpinit`的使用方法有帮助。
 
-接着阅读`bvpinit`文档，可以得知在采用`solinit = bvpinit(x,yinit)`调用方法时还可以在`yinit`后加上`未知变量`的输入，即`solinit = bvpinit(___,parameters)`。因此，结合ppt前文，ppt中`x1`和`x2`两个变量的含义也就明了了。个人认为`x2`为`未知变量`的初始估计值向量。
+接着阅读`bvpinit`文档，可以得知在采用`solinit = bvpinit(x,yinit)`调用方法时还可以在`yinit`后加上`未知参数`的输入，即`solinit = bvpinit(___,parameters)`。因此，结合ppt前文，ppt中`x1`和`x2`两个变量的含义也就明了了。个人认为`x2`为`未知参数`的初始估计值向量。
