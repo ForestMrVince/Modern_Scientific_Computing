@@ -88,7 +88,7 @@ options.RelTol = 1e-7;
 hold on;
 plot(T_, Y_(:,1), '-^');
 fprintf('提高求解精度后两个解的 f(5) 差值为: ');
-Error_ = abs(Y(end, 1) - Y_OLD(end, 1));
+Error_ = abs(Y(end, 1) - Y_(end, 1));
 disp(Error_);
 disp('验证完成！！！');
 
@@ -156,6 +156,6 @@ options.RelTol = 1e-7;
 hold on;
 plot(T_, Y_(:,1), '-^');
 fprintf('提高求解精度后两个解的 f(1) 差值为: ');
-Error_ = abs(Y(end, 1) - Y_OLD(end, 1));
+Error_ = abs(Y(end, 1) - Y_(end, 1));
 disp(Error_);
 disp('验证完成！！！');
