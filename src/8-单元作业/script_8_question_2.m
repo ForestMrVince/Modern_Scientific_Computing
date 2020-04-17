@@ -1,40 +1,40 @@
-% ĞèÒª×¢ÒâµÄÊÇ, ´úÂë¶ÎÖĞÍ¬Ê±°üº¬interp3ºÍÑùÌõ²åÖµÁ½ÖÖ²åÖµ·½·¨, 
-% Òò´ËÓĞÉÏÏÂÁ½¸ö»æÖÆÎó²îµÄÓï¾ä, ÉÏÏÂÁ½´¦»æÖÆÎó²îÍ¼Ïñ, 
-% ²»ÄÜÍ¬Ê±Ê¹ÓÃ, ÈôĞèÊ¹ÓÃÒ»¸ö, Çë½«ÁíÒ»¸ö×¢ÊÍµô.
-% ×¢£ºvol_visual4d, ÒıÓÃ×Ô¡¶¸ßµÈÓ¦ÓÃÊıÑ§ÎÊÌâµÄMATLAB?Çó½â µÚËÄ°æ¡·
-% ¸¨Öú½ÌÑ§×ÊÔ´ÖĞ¡°MATLAB´úÂë.rar¡±Ëù°üº¬µÄÎÄ¼ş¡£
+% éœ€è¦æ³¨æ„çš„æ˜¯, ä»£ç æ®µä¸­åŒæ—¶åŒ…å«interp3å’Œæ ·æ¡æ’å€¼ä¸¤ç§æ’å€¼æ–¹æ³•, 
+% å› æ­¤æœ‰ä¸Šä¸‹ä¸¤ä¸ªç»˜åˆ¶è¯¯å·®çš„è¯­å¥, ä¸Šä¸‹ä¸¤å¤„ç»˜åˆ¶è¯¯å·®å›¾åƒ, 
+% ä¸èƒ½åŒæ—¶ä½¿ç”¨, è‹¥éœ€ä½¿ç”¨ä¸€ä¸ª, è¯·å°†å¦ä¸€ä¸ªæ³¨é‡Šæ‰.
+% æ³¨ï¼švol_visual4d, å¼•ç”¨è‡ªã€Šé«˜ç­‰åº”ç”¨æ•°å­¦é—®é¢˜çš„MATLAB?æ±‚è§£ ç¬¬å››ç‰ˆã€‹
+% è¾…åŠ©æ•™å­¦èµ„æºä¸­â€œMATLABä»£ç .rarâ€æ‰€åŒ…å«çš„æ–‡ä»¶ã€‚
 
 clear; clc;
-% º¯Êı: val = V(x, y, z) = exp(-x*y - y*x - z*y) * cos((x^2)*y*z + (z^2)*y*x)
+% å‡½æ•°: val = V(x, y, z) = exp(-x*y - y*x - z*y) * cos((x^2)*y*z + (z^2)*y*x)
 V = @(x, y, z) exp(-x.*z - y.*x - z.*y) .* cos((x.^2).*y.*z + (z.^2).*y.*x);
 
-% Ô­º¯Êı
+% åŸå‡½æ•°
 original_mark = 0 : 0.1 : 4;
 [x, y, z] = meshgrid(0 : 0.1 : 4);
 val = V(x, y, z);
 
-% Éú³ÉÑù±¾µã
-sample_mark = 0: 0.3 : 4; % Ñù±¾µãÍø¸ñ±êÖ¾
+% ç”Ÿæˆæ ·æœ¬ç‚¹
+sample_mark = 0: 0.3 : 4; % æ ·æœ¬ç‚¹ç½‘æ ¼æ ‡å¿—
 [x0, y0, z0] = meshgrid(sample_mark);
 val0 = V(x0, y0, z0);
 
-% interp3ÄâºÏ
+% interp3æ‹Ÿåˆ
 spline_interp = interp3(x0, y0, z0, val0, x, y, z, 'spline');
-% ´Ë´¦¿ÉÒÔÑ¡Ôñ: Ä¬ÈÏ(ÏßĞÔ²åÖµ), pchip, nearest, spline; ×ÔĞĞÑ¡Ôñ
-vol_visual4d(x, y, z, spline_interp - val);% »æÖÆÎó²îÍ¼Ïñ
+% æ­¤å¤„å¯ä»¥é€‰æ‹©: é»˜è®¤(çº¿æ€§æ’å€¼), pchip, nearest, spline; è‡ªè¡Œé€‰æ‹©
+vol_visual4d(x, y, z, spline_interp - val);% ç»˜åˆ¶è¯¯å·®å›¾åƒ
 
-% ÑùÌõ²åÖµÄâºÏ
-[x_nd, y_nd, z_nd, val_nd] = mesh2nd(x, y, z, val); % ½«meshgrid×ª»»Îªndgrid
+% æ ·æ¡æ’å€¼æ‹Ÿåˆ
+[x_nd, y_nd, z_nd, val_nd] = mesh2nd(x, y, z, val); % å°†meshgridè½¬æ¢ä¸ºndgrid
 [x_nd0, y_nd0, z_nd0, val_nd0] = mesh2nd(x0, y0, z0, val0);
 
-sp1 = csapi({sample_mark, sample_mark, sample_mark}, val_nd0); % ¼ÆËãÑùÌõ²åÖµ
+sp1 = csapi({sample_mark, sample_mark, sample_mark}, val_nd0); % è®¡ç®—æ ·æ¡æ’å€¼
 sp1_result = fnval(sp1, {original_mark, original_mark, original_mark});
 sp2 = spapi({5, 5, 5}, {sample_mark, sample_mark, sample_mark}, val_nd0);
 sp2_result = fnval(sp1, {original_mark, original_mark, original_mark});
 
-sp_result = sp1_result; % Ñ¡ÔñçÛ¼ìÊÓµÄ½á¹û, µ±Ç°Ñ¡ÔñµÄÊÇÈı´ÎÑùÌõ²åÖµµÄÎó²î
+sp_result = sp1_result; % é€‰æ‹©è¦æ£€è§†çš„ç»“æœ, å½“å‰é€‰æ‹©çš„æ˜¯ä¸‰æ¬¡æ ·æ¡æ’å€¼çš„è¯¯å·®
 [x_mesh, y_mesh, z_mesh, err_mesh] = mesh2nd(x_nd, y_nd, z_nd, sp_result - val_nd);
-vol_visual4d(x_mesh, y_mesh, z_mesh, err_mesh); % »æÖÆÎó²îÍ¼Ïñ
+vol_visual4d(x_mesh, y_mesh, z_mesh, err_mesh); % ç»˜åˆ¶è¯¯å·®å›¾åƒ
 
 
 function [x1,y1,z1,v1]=mesh2nd(x,y,z,v)
