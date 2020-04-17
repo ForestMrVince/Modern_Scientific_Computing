@@ -3,6 +3,7 @@
 % 不能同时使用, 若需使用一个, 请将另一个注释掉.
 % 注：vol_visual4d, 引用自《高等应用数学问题的MATLAB?求解 第四版》
 % 辅助教学资源中“MATLAB代码.rar”所包含的文件。
+% 参考资料(其中例题8-10): http://www.doc88.com/p-9095269484567.html
 
 clear; clc;
 % 函数: val = V(x, y, z) = exp(-x*y - y*x - z*y) * cos((x^2)*y*z + (z^2)*y*x)
