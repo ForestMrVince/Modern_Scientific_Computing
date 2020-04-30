@@ -1,5 +1,6 @@
 # Modern_Scientific_Computing
 ### “neu_1910294穆壮壮”学习“现代科学运算”的相关文件
+> 仓库作者的作业中含有标记：`代码段（来自：https://github.com/ForestMrVince/Modern_Scientific_Computing）：`
 **文件目录说明:**
 - `.\doc`：每个章节学习中查询的资料，其中子目录为每个章节的标号；
 - `.\fig`：每个章节学习中生成的图像，其中子目录为每个章节的标号；
